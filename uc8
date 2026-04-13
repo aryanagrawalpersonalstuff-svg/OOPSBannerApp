@@ -1,0 +1,62 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class OOPSBannerApp {
+
+    public static void main(String[] args) {
+
+        Map<Character, String[]> patterns = new HashMap<>();
+
+        patterns.put('O', new String[]{
+                " ****** ",
+                "*      *",
+                "*      *",
+                "*      *",
+                "*      *",
+                "*      *",
+                " ****** "
+        });
+
+        patterns.put('P', new String[]{
+                " ****** ",
+                "*      *",
+                "*      *",
+                " ****** ",
+                "*       ",
+                "*       ",
+                "*       "
+        });
+
+        patterns.put('S', new String[]{
+                " ****** ",
+                "*       ",
+                "*       ",
+                " ****** ",
+                "       *",
+                "       *",
+                " ****** "
+        });
+
+        renderBanner("OOPS", patterns);
+    }
+
+    // Function to render banner
+    public static void renderBanner(String word, Map<Character, String[]> patterns) {
+
+        int height = 7;
+
+        for (int i = 0; i < height; i++) {
+            StringBuilder line = new StringBuilder();
+
+            for (char ch : word.toCharArray()) {
+                String[] pattern = patterns.get(ch);
+                if (pattern != null) {
+                    line.append(pattern[i]);
+                }
+                line.append(" ");
+            }
+
+            System.out.println(line);
+        }
+    }
+}
